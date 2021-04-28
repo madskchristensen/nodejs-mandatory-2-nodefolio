@@ -87,8 +87,8 @@ const recommendations = fs.readFileSync(
 )
 
 // homemade way of doing templates without the need for template engines
-const basetemplate = fs.readFileSync(__dirname + "/public/basetemplate.html", "utf-8");
-const koalapage = basetemplate.replace("{{BODY}}", frontpage).replace("{{TITLE}}", "Best Koala title ever").replace("{{KOALA_FACT}}", "<h1>Did you know that Koalas are always high and thus black, white and asian.</h1>");
+// const basetemplate = fs.readFileSync(__dirname + "/public/basetemplate.html", "utf-8");
+// const koalapage = basetemplate.replace("{{BODY}}", frontpage).replace("{{TITLE}}", "Best Koala title ever").replace("{{KOALA_FACT}}", "<h1>Did you know that Koalas are always high and thus black, white and asian.</h1>");
 
 app.get("/", (req, res) => {
     res.send(header + frontpage + footer)
@@ -114,9 +114,9 @@ app.get("/recommendations", (req, res) => {
     res.send(header + recommendations + footer)
 })
 
-app.get("/koala", (req, res) => {
-    res.send(header + koalapage + footer)
-})
+// app.get("/koala", (req, res) => {
+//     res.send(header + koalapage + footer)
+// })
 
 const server = app.listen(port, (err) => {
     if (err) {
