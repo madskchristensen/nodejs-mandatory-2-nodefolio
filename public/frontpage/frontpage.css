@@ -1,0 +1,24 @@
+header.masthead .overlay .img-profile {
+    max-width: 12.5rem;
+    max-height: 12.5rem;
+}
+
+.blue-header {
+    color: #2F4858;
+}
+
+#skills i {
+    color: #2F4858;
+}
+
+#skills .fontawesome-icon {
+    font-size: 3em;
+}
+
+li {
+
+}
+
+#skills .mfizz-icon {
+    font-size: 2.5em;
+}

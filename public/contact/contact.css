@@ -1,0 +1,12 @@
+form #message {
+    height: 15em;
+}
+
+form {
+    width: 30em;
+}
+
+.icon-container i {
+    color: #2F4858;
+    font-size: 4em;
+}
