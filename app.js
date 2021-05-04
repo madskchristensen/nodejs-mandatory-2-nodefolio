@@ -2,7 +2,7 @@
 // hand-in: fronter -> github link or zip
 
 // todo: Content for ->
-// todo:    frontpage, projects, skills, education, recommendations
+// todo:    frontpage, projects, education, recommendations
 // todo: lav anders' fix på footer igen?
 // todo: Erstat bootstrap carousel med ordentlig slider.. f.eks. https://www.npmjs.com/package/slick-carousel
 
@@ -24,10 +24,12 @@ app.use(express.urlencoded({
 const projectsRouter = require(__dirname + "/public/routes/projects.js")
 const contactRouter = require(__dirname + "/public/routes/contact.js")
 const skillsRouter = require(__dirname + "/public/routes/skills.js")
+const educationRouter = require(__dirname + "/public/routes/education.js")
 
 app.use(projectsRouter.router)
 app.use(contactRouter.router)
 app.use(skillsRouter.router)
+app.use(educationRouter.router)
 
 // Server-side rendering
 // read the html file as text
@@ -66,11 +68,6 @@ const projects = fs.readFileSync(
     { encoding: "utf-8" }
 )
 
-const contact = fs.readFileSync(
-    __dirname + "/public/contact/contact.html",
-    { encoding: "utf-8"}
-)
-
 const skills = fs.readFileSync(
     __dirname + "/public/skills/skills.html",
     { encoding: "utf-8"}
@@ -83,6 +80,11 @@ const education = fs.readFileSync(
 
 const recommendations = fs.readFileSync(
     __dirname + "/public/recommendations/recommendations.html",
+    { encoding: "utf-8"}
+)
+
+const contact = fs.readFileSync(
+    __dirname + "/public/contact/contact.html",
     { encoding: "utf-8"}
 )
 

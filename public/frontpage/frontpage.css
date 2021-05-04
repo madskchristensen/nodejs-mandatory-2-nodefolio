@@ -3,6 +3,10 @@ header.masthead .overlay .img-profile {
     max-height: 12.5rem;
 }
 
+header.overlay {
+    background-image: url("https://mammothtech.io/wp-content/uploads/2018/02/header-bg.png");
+}
+
 .blue-header {
     color: #2F4858;
 }
@@ -15,10 +19,12 @@ header.masthead .overlay .img-profile {
     font-size: 3em;
 }
 
-li {
-
-}
-
 #skills .mfizz-icon {
     font-size: 2.5em;
+}
+
+#lead {
+    text-align: justify;
+    width: 85%;
+    font-size: 1.15rem;
 }

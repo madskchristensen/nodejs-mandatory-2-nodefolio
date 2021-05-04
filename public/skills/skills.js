@@ -16,7 +16,7 @@
         *
         *
         * */
-        result.skills.map(skill => {
+        result.skills.map((skill, i, arr) => {
             const skillDiv = document.createElement("div")
             skillDiv.classList.add("skill-container", "d-flex", "text-center",
                 "flex-column", "flex-grow-1", "align-items-center", "p-4")
@@ -32,27 +32,38 @@
             const title = document.createElement("h1")
             title.innerText = skill.title
 
+            const subtitle = document.createElement("p")
+            subtitle.classList.add("text-muted")
+            subtitle.innerText = skill.subtitle
+
             const text = document.createElement("p")
             text.innerText = skill.text
+            text.classList.add("lh-lg")
+
 
             const progressWrapper = document.createElement("div")
             progressWrapper.classList.add("progress", "w-50")
 
             const progressBar = document.createElement("div")
-            progressBar.classList.add("progress-bar", "progress-bar-striped")
+            progressBar.classList.add("progress-bar", "progress-bar-striped", "progress-bar-animated")
             progressBar.setAttribute("role", "progressbar")
-            progressBar.setAttribute("style", "width: 50%")
-            progressBar.setAttribute("aria-valuenow", skill.percentProficiency)
+            progressBar.setAttribute("style", "width: " + skill.percentageExperience + "%")
+            progressBar.setAttribute("aria-valuenow", skill.percentageExperience)
             progressBar.setAttribute("aria-valuemin", "0")
             progressBar.setAttribute("aria-valuemax", "100")
-
-            const hr = document.createElement("hr")
+            progressBar.innerText = skill.yearsExperience > 1? `${skill.yearsExperience} years` : `${skill.yearsExperience} year`
 
             progressWrapper.append(progressBar)
 
-            skillDiv.append(icon, title, text, progressWrapper)
+            const hr = document.createElement("hr")
 
-            skillsContainer.append(skillDiv, hr)
+            skillDiv.append(icon, title, subtitle, text, progressWrapper)
+
+            skillsContainer.append(skillDiv)
+
+            if (!(arr.length - 1 === i)) {
+                skillsContainer.append(hr)
+            }
         })
     } catch (error) {
         console.log(error)
