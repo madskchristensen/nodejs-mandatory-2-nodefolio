@@ -1,6 +1,19 @@
-// fetch("/api/projects").then(res => res.json()).then(console.log)
-
 (async function getProjects() {
+    try {
+        const response = await fetch('/api/projects')
+        const result = await response.json()
+
+        const projectsDiv = document.getElementById("projects")
+
+        result.projects.map(project => {
+
+        })
+    } catch (err) {
+        console.log(err)
+    }
+})()
+
+/*(async function getProjects() {
     try {
         const response = await fetch('/api/projects')
         const result = await response.json()
@@ -46,6 +59,8 @@
             projectGithub.href = project.gitLink
             projectGithub.innerText = "GitHub"
 
+            // images
+
             cardBodyDiv.appendChild(titleHeader)
             cardBodyDiv.appendChild(projectDate)
             cardBodyDiv.appendChild(descriptionP)
@@ -62,21 +77,4 @@
 
         console.log(error)
     }
-})()
-
-/*
-function showProjects() {
-    const projects = getProjects().then()
-
-    console.log(projects)
-
-    const containerDiv = document.getElementById("projects-container")
-
-    const newDiv = document.createElement("div")
-
-    const newContent = document.createTextNode(projects)
-
-    newDiv.appendChild(newContent)
-
-    containerDiv.appendChild(newDiv)
-}*/
+})()*/
