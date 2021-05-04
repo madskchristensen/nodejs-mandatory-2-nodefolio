@@ -29,7 +29,7 @@ body {
 }
 
 #main-content {
-    min-height: calc(100vh - 2em - 118px);
+    min-height: calc(100vh - 8em);
 }
 
 a {
