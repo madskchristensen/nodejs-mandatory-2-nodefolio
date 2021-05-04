@@ -31,6 +31,7 @@
 
             const title = document.createElement("h1")
             title.innerText = skill.title
+            title.classList.add("blue-header")
 
             const subtitle = document.createElement("p")
             subtitle.classList.add("text-muted")

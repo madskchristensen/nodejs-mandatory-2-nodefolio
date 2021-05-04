@@ -21,6 +21,8 @@ function getFormattedDate(date) {
     return day + "/" + month + "/" + year
 }
 
+const imageRoot = "/../img"
+
 const projects = [
     {
         title: "Nodefolio",
@@ -30,7 +32,7 @@ const projects = [
         endDate: getFormattedDate(new Date("2021-05-09")),
         languages: ["HTML", "CSS", "JavaScript"],
         tech: ["Node.js", "Express", "Bootstrap", "Nodemailer", "Toastr"],
-        imageRoot: "/public/img/nordicmotorhome/",
+        imageRoot: imageRoot + "/nodefolio/",
         images: ["home.png", "skills.png", "contact.png"],
         hostedLink: "",
         gitLink: "https://github.com/madskchristensen/nodejs-mandatory-2-nodefolio"
@@ -45,7 +47,7 @@ const projects = [
     endDate: getFormattedDate(new Date("2020-06-04")),
     languages: ["Java", "HTML", "CSS"],
     tech: ["Spring Boot", "Spring Security", "Spring Web", "Tymeleaf", "JDBC", "Bootstrap", "jQuery"],
-    imageRoot:"/public/img/nordicmotorhome/",
+    imageRoot: imageRoot + "/nordicmotorhome/",
     images: ["booking-1.png", "booking-2.png", "booking-3.png", "booking-4.png", "booking-5.png", "booking-6.png", "booking-7.png", "bookings.png"],
     hostedLink: "",
     gitLink: "https://github.com/StortM/2-semester-eksamensprojekt"

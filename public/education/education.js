@@ -12,9 +12,11 @@
 
             const title = document.createElement("h1")
             title.innerText = education.title
+            title.classList.add("blue-header")
 
             const school = document.createElement("h4")
             school.innerText = education.school + " - " + education.location
+            school.classList.add("text-secondary")
 
             const date = document.createElement("p")
             date.classList.add("project-date", "card-subtitle", "mb-2", "text-muted")
