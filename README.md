@@ -1,5 +1,3 @@
-##### Node.js, Express, nodemailer, toastr, bootstrap5
-
 # nodejs-mandatory-2-nodefolio
 Portfolio created in Node.js using Express for Node.js elective.
 
@@ -11,3 +9,5 @@ Portfolio created in Node.js using Express for Node.js elective.
 
 ## Run
 npm run start
+
+##### Node.js, Express, nodemailer, toastr, bootstrap5
