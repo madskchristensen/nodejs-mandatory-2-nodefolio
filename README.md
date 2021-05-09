@@ -1,6 +1,8 @@
 # nodejs-mandatory-2-nodefolio
 Portfolio created in Node.js using Express for Node.js elective.
 
+Node.js, Express, nodemailer, toastr, bootstrap5
+
 ## In order to run the project
 1. run "npm install" to get nessecary node modules.
 2. (only needed if contact form should send emails)
