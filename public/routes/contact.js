@@ -62,7 +62,7 @@ router.post("/api/contact", (req, res) => {
     }
 
     // change argument to either transporterDev or transporterProd
-    sendMail(transporterProd).catch(console.error)
+    sendMail(transporterDev).catch(console.error)
 
     res.redirect("/contact")
 })

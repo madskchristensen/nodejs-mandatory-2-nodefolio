@@ -5,6 +5,7 @@ function setAttributes(element, attributes) {
     }
 }
 
+// https://css-tricks.com/creating-a-modal-image-gallery-with-bootstrap-components/
 (async function getProjects() {
     try {
         const response = await fetch('/api/projects')
@@ -12,9 +13,15 @@ function setAttributes(element, attributes) {
 
         const projectsDiv = document.getElementById("projects")
 
+        // Iterate projects from api
         result.projects.map((project, i, arr) => {
+            // get title with no spaces. Used to refer to each modal and carousel uniquely
+            // by "modal" or "carousel" + project title and to set id of projectDiv
+            const titleNoSpaces = project.title.split(" ").join("")
+            // PROJECT DIV //
             const projectDiv = document.createElement("div")
-            projectDiv.classList.add( "project", "mt-4")
+            projectDiv.id = titleNoSpaces[0].toLowerCase() + titleNoSpaces.substring(1)
+            projectDiv.classList.add("mt-4", "text-center")
 
             const title = document.createElement("h1")
             title.innerText = project.title
@@ -24,27 +31,71 @@ function setAttributes(element, attributes) {
             date.innerText = project.startDate + " - " + project.endDate
             date.classList.add("text-muted")
 
+            // GITHUB //
+            const github = document.createElement("a")
+            github.href = project.gitLink
+
+            const githubTitle = document.createElement("p")
+            githubTitle.innerText = project.gitLink
+            githubTitle.classList.add("mt-5", "mb-3", "lead")
+            github.append(githubTitle)
+
+            const descWrapper = document.createElement("div")
+            descWrapper.id = "descWrapper"
+            descWrapper.classList.add("d-flex", "flex-column", "align-items-center", "mt-4", "mb-4")
+
+            const descTitle = document.createElement("h4")
+            descTitle.classList.add("lead")
+            descTitle.innerText = "Description"
+
             const description = document.createElement("p")
+            description.id = "description"
+            description.classList.add("text-break")
             description.innerText = project.description
 
+            descWrapper.append(descTitle)
+            descWrapper.append(description)
+
+            // LANGUAGES //
+            const langWrapper = document.createElement("div")
+            langWrapper.id = "langWrapper"
+            langWrapper.classList.add("mb-5")
+
+            const langTitle = document.createElement("h4")
+            langTitle.classList.add("lead")
+            langTitle.innerText = "Languages"
+
             const languages = document.createElement("p")
-            languages.innerText = project.languages
+            languages.innerText = project.languages.join(", ")
+
+            langWrapper.append(langTitle, languages)
+
+            // TECH //
+            const techWrapper = document.createElement("div")
+            techWrapper.classList.add("mb-3")
+
+            const techTitle = document.createElement("h4")
+            techTitle.classList.add("lead")
+            techTitle.innerText = "Tech"
 
             const tech = document.createElement("p")
-            tech.innerText = project.tech
+            tech.innerText = project.tech.join(", ")
 
-            const github = document.createElement("a")
-            github.classList.add("fw-bold")
-            github.href = project.gitLink
-            github.innerText = "GitHub"
+            techWrapper.append(techTitle, tech)
 
-            projectDiv.append(title, date, description, languages, tech, github)
+            projectDiv.append(title, date, descWrapper, langWrapper, techWrapper, github)
 
             projectsDiv.append(projectDiv)
 
-            // get title with no spaces. Used to refer to each modal and carousel uniquely
-            // by "modal" or "carousel" + project title
-            const titleNoSpaces = project.title.split(" ").join("")
+            const galleryWrapper = document.createElement("div")
+            galleryWrapper.id = "galleryWrapper"
+            galleryWrapper.classList.add("text-center")
+
+            const gallerySubtitle = document.createElement("h4")
+            gallerySubtitle.classList.add("lead", "mt-3")
+            gallerySubtitle.innerText = "Click each image for a bigger version"
+
+            galleryWrapper.append(gallerySubtitle)
 
             // image gallery div containing all images
             const gallery = document.createElement("div")
@@ -65,17 +116,20 @@ function setAttributes(element, attributes) {
                 console.log()
 
                 const img = document.createElement("img")
+                img.src = imageRoot + image
                 setAttributes(img,
                     {
-                        "src": imageRoot + image,
                         "data-bs-target": "#carousel" + titleNoSpaces,
                         "data-bs-slide-to": i
                     })
+                img.classList.add("mx-2", "mb-2")
+
                 gallery.append(img)
             })
 
             // append gallery to the surrounding project div
-            projectDiv.append(gallery)
+            galleryWrapper.append(gallery)
+            projectDiv.append(galleryWrapper)
 
             // create hr element to separate projects, unless project is last
             if (!(arr.length - 1 === i)) {

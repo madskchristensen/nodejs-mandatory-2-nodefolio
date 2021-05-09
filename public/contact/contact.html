@@ -6,88 +6,20 @@
       crossorigin="anonymous"/>
 <link rel="stylesheet" href="contact.css">
 
-<script>
-    // toastr custom settings
-    (() => {
-        toastr.options.closeButton = true;
-        toastr.options.timeOut = 3000;
-        toastr.options.extendedTimeOut = 3000;
-        toastr.options.progressBar = true;
-
-        toastr.options.showMethod = 'slideDown';
-        toastr.options.hideMethod = 'slideUp';
-        toastr.options.closeMethod = 'slideUp';
-    })()
-
-    // get form data
-    // send it with fetch
-    // idea: use toastr for showing the messages
-    async function sendFormData() {
-        const msgSuccess = "Email sent!"
-        const msgError = "Something went wrong. Email not sent."
-
-        // select the form element with dom api
-        const formElement = document.getElementById("contact-form")
-
-        // create FormData object and populate it with data from formElement
-        // https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
-        const formData = new FormData(formElement)
-
-        // create javascript object with key:value pairs representing form data
-        const form = {}
-        formData.forEach((value, key) => form[key] = value)
-
-        // use fetch to post the form object to api
-        await fetch("/api/contact", {
-            headers: {
-                "Content-Type": "application/json"
-            },
-            method: "POST",
-            body: JSON.stringify(form)
-
-        })
-            // according to https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
-            // fetch will only reject promise if request is not completed or a network failure happens
-            // this means http error codes like 404 will still result in a resolved promise
-            // res.ok is set to true if http code is within 200-299 range.
-            // So a 404 (or other error) will result in ok = false
-            .then(res => {
-                if (!res.ok) {
-                    throw new Error(`Network response was not ok: ${res.status} ${res.statusText}`)
-                }
-
-                toastr.success(msgSuccess)
-            })
-            .catch(err => {
-                toastr.error(msgError)
-                console.log(err)
-            })
-
-        resetForm()
-    }
-
-    function resetForm() {
-        document.getElementById("name").value = ""
-        document.getElementById("email").value = ""
-        document.getElementById("subject").value = ""
-        document.getElementById("message").value = ""
-    }
-</script>
-
 <div class="container">
     <div class="row justify-content-around">
         <div class="col text-center">
             <div class="text-center icon-container d-inline-block p-5">
-                <a href="https://www.facebook.com/mads.christensen.790/">
+                <a href="https://www.facebook.com/mads.christensen.790/" data-bs-toggle="tooltip" title="Facebook">
                     <i class="fab fa-facebook"></i>
                 </a>
             </div>
             <div class="text-center icon-container d-inline-block p-5">
-                <a href="https://www.linkedin.com/in/mads-christensen-58b50013b/">
+                <a href="https://www.linkedin.com/in/mads-christensen-58b50013b/" data-bs-toggle="tooltip" title="LinkedIn">
                     <i class="fab fa-linkedin"></i>
                 </a>
             </div>
-            <div class="text-center icon-container d-inline-block p-5">
+            <div class="text-center icon-container d-inline-block p-5" data-bs-toggle="tooltip" title="GitHub">
                 <a href="https://github.com/madskchristensen">
                     <i class="fab fa-github-square"></i>
                 </a>
@@ -123,8 +55,10 @@
                     <label for="message" class="form-label">Message: </label>
                 </div>
 
-                <input type="submit" class="btn btn-primary" value="Send"/>
+                <input type="submit" class="btn btn-outline-primary" value="Send"/>
             </form>
         </div>
     </div>
 </div>
+
+<script src="./contact.js"></script>
