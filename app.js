@@ -20,6 +20,7 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
+app.set("port", port)
 
 const projectsRouter = require(__dirname + "/public/routes/projects.js")
 const contactRouter = require(__dirname + "/public/routes/contact.js")
@@ -120,10 +121,10 @@ app.get("/recommendations", (req, res) => {
 //     res.send(header + koalapage + footer)
 // })
 
-const server = app.listen(port, (err) => {
+const server = app.listen(app.get("port"), (err) => {
     if (err) {
         console.log(err)
     } else {
-        console.log("Express listening at port", server.address().port)
+        console.log("Express listening at port", app.get("port"))
     }
 })
