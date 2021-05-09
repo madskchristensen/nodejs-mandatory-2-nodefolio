@@ -12,7 +12,7 @@
 
 const express = require("express")
 const app = express()
-const port = process.env.port || 8080
+const port = process.env.port;
 const fs = require("fs")
 
 app.use(express.static("public"))
@@ -20,7 +20,6 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: true
 }))
-app.set("port", port)
 
 const projectsRouter = require(__dirname + "/public/routes/projects.js")
 const contactRouter = require(__dirname + "/public/routes/contact.js")
@@ -121,10 +120,10 @@ app.get("/recommendations", (req, res) => {
 //     res.send(header + koalapage + footer)
 // })
 
-const server = app.listen(app.get("port"), (err) => {
+const server = app.listen(port, (err) => {
     if (err) {
         console.log(err)
     } else {
-        console.log("Express listening at port", app.get("port"))
+        console.log("Express listening at port", port)
     }
 })
