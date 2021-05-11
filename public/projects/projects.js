@@ -31,18 +31,9 @@ function setAttributes(element, attributes) {
             date.innerText = project.startDate + " - " + project.endDate
             date.classList.add("text-muted")
 
-            // GITHUB //
-            const github = document.createElement("a")
-            github.href = project.gitLink
-
-            const githubTitle = document.createElement("p")
-            githubTitle.innerText = project.gitLink
-            githubTitle.classList.add("mt-5", "mb-3", "lead")
-            github.append(githubTitle)
-
             const descWrapper = document.createElement("div")
             descWrapper.id = "descWrapper"
-            descWrapper.classList.add("d-flex", "flex-column", "align-items-center", "mt-4", "mb-4")
+            descWrapper.classList.add("d-flex", "flex-column", "align-items-center", "mt-4", "mb-2")
 
             const descTitle = document.createElement("h4")
             descTitle.classList.add("lead")
@@ -59,7 +50,7 @@ function setAttributes(element, attributes) {
             // LANGUAGES //
             const langWrapper = document.createElement("div")
             langWrapper.id = "langWrapper"
-            langWrapper.classList.add("mb-5")
+            langWrapper.classList.add("mb-2")
 
             const langTitle = document.createElement("h4")
             langTitle.classList.add("lead")
@@ -72,7 +63,6 @@ function setAttributes(element, attributes) {
 
             // TECH //
             const techWrapper = document.createElement("div")
-            techWrapper.classList.add("mb-3")
 
             const techTitle = document.createElement("h4")
             techTitle.classList.add("lead")
@@ -83,7 +73,18 @@ function setAttributes(element, attributes) {
 
             techWrapper.append(techTitle, tech)
 
-            projectDiv.append(title, date, descWrapper, langWrapper, techWrapper, github)
+            // GITHUB //
+            const githubLink = document.createElement("a")
+            githubLink.href = project.gitLink
+            githubLink.target = "_blank"
+            githubLink.rel = "noopener noreferrer"
+
+            const githubButton = document.createElement("button")
+            githubButton.classList.add("btn", "btn-outline-primary", "m-3")
+            githubButton.textContent = "View on GitHub"
+            githubLink.append(githubButton)
+
+            projectDiv.append(title, date, descWrapper, langWrapper, techWrapper, githubLink)
 
             projectsDiv.append(projectDiv)
 
@@ -91,8 +92,8 @@ function setAttributes(element, attributes) {
             galleryWrapper.id = "galleryWrapper"
             galleryWrapper.classList.add("text-center")
 
-            const gallerySubtitle = document.createElement("h4")
-            gallerySubtitle.classList.add("lead", "mt-3")
+            const gallerySubtitle = document.createElement("p")
+            gallerySubtitle.classList.add("fst-italic", "fs-6", "mt-3", "mb-1")
             gallerySubtitle.innerText = "Click each image for a bigger version"
 
             galleryWrapper.append(gallerySubtitle)
@@ -287,69 +288,3 @@ function setAttributes(element, attributes) {
         console.log(err)
     }
 })()
-
-/*(async function getProjects() {
-    try {
-        const response = await fetch('/api/projects')
-        const result = await response.json()
-
-        const projectsDiv = document.getElementById("projects")
-
-        result.projects.map(project => {
-            const cardDiv = document.createElement("div")
-            cardDiv.classList.add("card")
-
-            const cardBodyDiv = document.createElement("div")
-            cardBodyDiv.classList.add("card-body")
-
-            // title
-            const titleHeader = document.createElement("h1")
-            titleHeader.classList.add("project-title", "card-title")
-            titleHeader.innerText = project.title
-
-            // start - end date
-            const projectDate = document.createElement("p")
-            // project-date card-subtitle mb-2 text-muted
-            projectDate.classList.add("project-date", "card-subtitle", "mb-2", "text-muted")
-            projectDate.innerText = project.startDate + " - " + project.endDate
-
-            // description
-            const descriptionP = document.createElement("p")
-            descriptionP.classList.add("project-description", "fs-5")
-            descriptionP.innerText = project.description
-
-            // languages
-            const projectLanguages = document.createElement("p")
-            projectLanguages.classList.add("project-languages", "fs-6")
-            projectLanguages.innerText = "Languages: \n" + project.languages.join(", ")
-
-            // tech
-            const projectTech = document.createElement("p")
-            projectTech.classList.add("project-tech", "fs-6")
-            projectTech.innerText = "Technologies: \n" + project.tech.join(", ")
-
-            // github link
-            const projectGithub = document.createElement("a")
-            projectGithub.classList.add("project-github", "fw-bold")
-            projectGithub.href = project.gitLink
-            projectGithub.innerText = "GitHub"
-
-            // images
-
-            cardBodyDiv.appendChild(titleHeader)
-            cardBodyDiv.appendChild(projectDate)
-            cardBodyDiv.appendChild(descriptionP)
-            cardBodyDiv.appendChild(projectLanguages)
-            cardBodyDiv.appendChild(projectTech)
-            cardBodyDiv.appendChild(projectGithub)
-
-            cardDiv.appendChild(cardBodyDiv)
-
-            projectsDiv.appendChild(cardDiv)
-        })
-
-    } catch (error) {
-
-        console.log(error)
-    }
-})()*/
