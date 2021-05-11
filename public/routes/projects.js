@@ -55,7 +55,6 @@ const projects = [
 ]
 
 router.get("/api/projects", (req, res) => {
-    console.log(projects[0].imageRoot + projects[0].images[0])
     res.send({projects})
 })
 
