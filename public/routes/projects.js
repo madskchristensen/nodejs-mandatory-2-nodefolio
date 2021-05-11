@@ -33,7 +33,7 @@ const projects = [
         languages: ["HTML", "CSS", "JavaScript"],
         tech: ["Node.js", "Express", "Bootstrap", "Nodemailer", "Toastr"],
         imageRoot: imageRoot + "/nodefolio/",
-        images: ["home.png", "skills.png", "contact.png"],
+        images: ["home.PNG", "skills.PNG", "contact.PNG"],
         hostedLink: "",
         gitLink: "https://github.com/madskchristensen/nodejs-mandatory-2-nodefolio"
     },
