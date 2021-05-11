@@ -1,7 +1,7 @@
 # nodejs-mandatory-2-nodefolio
 Portfolio created in Node.js using Express for Node.js elective.
 
-## In order to run the project
+## Set-up
 1. run "npm install" to get nessecary node modules.
 2. (only needed if contact form should send emails)
    1. Copy the content of config-example.json and paste it into a file named config.json, and place it in the root directory of the project. 
