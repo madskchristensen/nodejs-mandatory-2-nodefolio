@@ -1,15 +1,6 @@
 // deadline: May 9th 23:59
 // hand-in: fronter -> github link or zip
 
-// todo: Content for ->
-// todo:    frontpage, projects, education, recommendations
-// todo: lav anders' fix på footer igen?
-// todo: Erstat bootstrap carousel med ordentlig slider.. f.eks. https://www.npmjs.com/package/slick-carousel
-
-// todo: ekstra: Override bootstrap default colors? Så den blå matcher header farven
-// todo: ekstra: find en måde at fixe mfizz ikoner så de matcher fontawesome på frontpage
-// todo: bonus: deploy application
-
 const express = require("express")
 const app = express()
 let port = process.env.PORT || 8080;
