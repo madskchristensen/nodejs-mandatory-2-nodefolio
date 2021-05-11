@@ -21,7 +21,7 @@ function getFormattedDate(date) {
     return day + "/" + month + "/" + year
 }
 
-const imageRoot = "/../img"
+const imageRoot = "../img/"
 
 const projects = [
     {
